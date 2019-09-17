@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <title>To Do List</title>
-</head>
-<body>
+
+
+<%- include("header") -%>
 
 <div class="box" id="boxDate">
     <h3><%= kindOfDay %></h3>
@@ -25,7 +17,7 @@
     <% for(var i=0; i<todos.length; i++){ %>
 
     <div class="item">
-       <input id="deleteItem" type="checkbox">
+       <input class="deleteItem" type="checkbox">
        <p><%= todos[i] %></p>
     </div>
 
@@ -38,27 +30,15 @@
 
 </div>
 
-
 <script>
-$("#deleteItem").click(function (e) { 
-   $(this).closest(".item").remove();
 
-})
-
-// var colors = ["red", "green", "blue", "gray", "purple", "yellow"];
-// var rand = colors[Math.floor(Math.random()* colors.length)];
-
-// $("body").css("background-color", colors[rand]);
+$(".deleteItem").click(function (e) { 
+    e.preventDefault();
+    $(this).closest(".item").remove(); 
+});
 
 </script>
 
+<%- include("footer") -%>
 
 
-
-<footer>
-   <h6>Emr4706Ny</h6> 
-</footer>
-
-    
-</body>
-</html>

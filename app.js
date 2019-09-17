@@ -22,15 +22,10 @@ app.get('/', (req, res) => {
 
   let day = today.toLocaleDateString("en-US", options);
 
-
   res.render("list", {
       kindOfDay: day, todos: todoList
   });
-
-
 });
-
-
 
 let todoList = ["Doe Boodschappen", "Eet Afmaken", "Doe Afwassen"];
 
@@ -48,7 +43,6 @@ app.post('/', (req, res) => {
   res.redirect('/');
 
 })
-
 
 
 app.listen(port, () => console.log(`Server running on port ${port}!`))
