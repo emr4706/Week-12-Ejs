@@ -23,6 +23,7 @@
 <div class="box">
 
     <% for(var i=0; i<todos.length; i++){ %>
+
     <div class="item">
        <input id="deleteItem" type="checkbox">
        <p><%= todos[i] %></p>
@@ -40,16 +41,23 @@
 
 <script>
 $("#deleteItem").click(function (e) { 
-   $(this).closest("div").remove();
+   $(this).closest(".item").remove();
 
 })
+
+// var colors = ["red", "green", "blue", "gray", "purple", "yellow"];
+// var rand = colors[Math.floor(Math.random()* colors.length)];
+
+// $("body").css("background-color", colors[rand]);
 
 </script>
 
 
 
 
-
+<footer>
+   <h6>Emr4706Ny</h6> 
+</footer>
 
     
 </body>
