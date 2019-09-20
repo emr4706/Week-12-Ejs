@@ -2,6 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
 
+const userName = "emr";
+const userPassword = "123"
+
 const app = express();
 const port = 3000
 
@@ -11,7 +14,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 
 
-app.get('/', (req, res) => {
+app.get('/list', (req, res) => {
 
   var today = new Date();
   let options = {
@@ -27,20 +30,34 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/', (req, res) => {
+  res.render('login', {isError: false}); 
+})
+
+app.post('/login', (req, res) => {
+
+   let {username, password} = req.body;
+
+   if(username === userName && password === userPassword) {
+
+      return res.redirect('/list');
+   }
+
+   res.render('login', {isError: true});
+})
+
+
+
+
 let todoList = ["Doe Boodschappen", "Eet Afmaken", "Doe Afwassen"];
 
-// app.get('/', (req, res) => {
-  
-//   res.render("list", {todos: todoList});
-  
-// });
 
-app.post('/', (req, res) => {
+app.post('/add-todo', (req, res) => {
   
   let newTodo = req.body.newTodo;
   todoList.push(newTodo);
 
-  res.redirect('/');
+  res.redirect('list');
 
 })
 
